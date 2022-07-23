@@ -1,13 +1,13 @@
-import { useSelector, useDispatch } from "react-redux";
-import { getTicket, reset } from "../features/tickets/ticketSlice";
-import { useParams } from "react-router-dom";
-import { useEffect } from "react";
-import { toast } from "react-toastify";
-import BackButton from "../Components/BackButton";
-import Spinner from "../Components/Spinner";
+import { useSelector, useDispatch } from 'react-redux';
+import { getTicket } from '../features/tickets/ticketSlice';
+import { useParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { toast } from 'react-toastify';
+import BackButton from '../Components/BackButton';
+import Spinner from '../Components/Spinner';
 
 const Ticket = () => {
-  const { ticket, isLoading, isSuccess, isError, message } = useSelector(
+  const { ticket, isLoading, isError, message } = useSelector(
     (state) => state.tickets
   );
 
@@ -33,17 +33,17 @@ const Ticket = () => {
   }
 
   return (
-    <div className="ticket-page">
-      <header className="ticket-header">
-        <BackButton url="tickets" />
+    <div className='ticket-page'>
+      <header className='ticket-header'>
+        <BackButton url='tickets' />
         <h2>
           Ticket ID: {ticket._id}
           <span className={`status status-${ticket.status}`}></span>
           <h3>
-            Date Submitted: {new Date(ticket.createdAt).toLocaleString("en-US")}
+            Date Submitted: {new Date(ticket.createdAt).toLocaleString('en-US')}
           </h3>
           <hr />
-          <div className="ticket-desc">
+          <div className='ticket-desc'>
             <h3>Description of issue</h3>
             <p>{ticket.description}</p>
           </div>
